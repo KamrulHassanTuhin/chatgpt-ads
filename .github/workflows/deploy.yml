@@ -19,8 +19,3 @@ jobs:
           username: pseo@pseo.chatgptadvertising.agency
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /pseo.chatgptadvertising.agency/wp-content/themes/chatgpt-pseo/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .vscode/**
