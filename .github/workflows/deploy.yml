@@ -7,10 +7,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: FTP Deploy
+      - name: Deploy Theme
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: server226.web-hosting.com
           username: pseo@pseo.chatgptadvertising.agency
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /pseo.chatgptadvertising.agency/wp-content/themes/chatgpt-pseo/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.vscode/**
+            **/.claude/**
+            **/node_modules/**
+            deploy.py
+            deploy_homepage.py
+            mobile_optimize.py
+            push_plugin.py
+            pseo-api.php
+            pseo_config.json
+            plugin-deploy/**
+      - name: Deploy Plugin
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: server226.web-hosting.com
+          username: pseo@pseo.chatgptadvertising.agency
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./plugin-deploy/
+          server-dir: /pseo.chatgptadvertising.agency/wp-content/plugins/pseo-api/
